@@ -1,0 +1,78 @@
+{% extends "skillhelper/baseIndex.html" %}
+
+{%  load staticfiles %}
+
+
+{% block content %}
+    <div class="row" id="heroTabs">
+        <!-- HERO tab navigation -->
+            <ul>
+                {% for hero in heroes %}
+                    <li> <a href="#tab{{ hero.id }}">{{ hero.name }}</a> </li>
+                {% endfor %}
+            </ul>
+
+        <!-- tab content -->
+        {% for hero in heroes %}
+            <div id="tab{{ hero.id }}" class="characterpanel fluid-container">
+
+                <div id="characterInfo" class="row">
+                    <h2 id="heroName" class="col-md-2">Held {{ hero.name }}</h2>
+                    <ul class="characterQualities col-md-10">
+                        <li>Rasse: {{ hero.race }}</li>
+                        <li>Profession: {{ hero.profession }}</li>
+                        <li>Kultur: {{ hero.culture }}</li>
+                        <li>Alter: {{ hero.age  }}</li>
+                    </ul>
+                    <ul class="characterStats">
+                        <li>KK: {{ hero.koerperkraft }}</li>
+                        <li>KO: {{ hero.konstitution}}</li>
+                        <li>MU: {{ hero.mut}}</li>
+                        <li>KL: {{ hero.klugheit }}</li>
+                        <li>IN: {{ hero.intuition }}</li>
+                        <li>CH: {{ hero.charisma }}</li>
+                        <li>FF: {{ hero.fingerfertigkeit }}</li>
+                        <li>GE: {{ hero.gewandtheit }}</li>
+                    </ul>
+                </div>
+
+                <div id="skills" class="row">
+                    {% for ability in hero.ability_set.all %}
+                        <div class="skill col-md-3">
+                            <div class="row skillHeading">{{ ability.talent }}</div>
+                            <ul class="row requiredTalents">
+                                <li>{{ ability.talent.get_requiredTalent1_display }}</li>
+                                <li>{{ ability.talent.get_requiredTalent2_display }}</li>
+                                <li>{{ ability.talent.get_requiredTalent3_display }}</li>
+                            </ul>
+                            <span class="skillImprovement">Verbessert: {{ ability.improvement }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div id="result" class=row">
+                    <div class="row col-md-9 resultValues">
+                        <div class="col-md-4">
+                            <label for="resultValue1" class="label">Testlabel 1</label>
+                            <input id="resultValue1" class="" type="text" disabled />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="resultValue2" class="label">Testlabel 2</label>
+                            <input id="resultValue2" class="" type="text" disabled />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="resultValue3" class="label">Testlabel 3</label>
+                            <input id="resultValue3" class="" type="text" disabled />
+                        </div>
+                    </div>
+                    <div class="col-md-3 roll-btn">
+                        <img src="{% static 'skillhelper/images/wuerfelnBtn.png' %}" />
+                    </div>
+                </div>
+
+            <div style="clear: both;"></div>
+            </div>
+        {% endfor %}
+        <!-- end tabcontent -->
+    </div>
+{% endblock %}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        {%  load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'jqueryUI/jquery-ui-1.11.2.custom/jquery-ui.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'skillhelper/style.css' %}" />
+        <script type="text/javascript" src="{% static 'jquery/jquery-1.11.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'jqueryUI/jquery-ui-1.11.2.custom/jquery-ui.js' %}"></script>
+        <script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'skillhelper/index.js' %}"></script>
+        <title>Skill Helper for DSA</title>
+    </head>
+    <body>
+        <!-- Banner -->
+        <div class="container-fluid">
+            <!-- BANNER -->
+            <div class="row" id="banner">
+                <div class="col-md-6 col-md-offset-3"><img  src="{% static 'skillhelper/images/dsa_banner.png' %}" /></div>
+            </div>
+
+            <!-- NAVIGATION -->
+            <div class="row" id="navigation">
+
+            </div>
+
+            <!-- HEROES -->
+            <div class="row" id="heroTabs">
+                <!-- Tabs -->
+                {% block heroNameList %}
+                <ul>
+                    {% for hero in heroes %}
+                        <li> <a href="#tab{{ hero.id }}">{{ hero.name }}</a> </li>
+                    {% endfor %}
+                </ul>
+                {% endblock %}
+                <!-- Tab content -->
+                {% block heroSkills %}
+                {% for hero in heroes %}
+                    <div id="tab{{ hero.id }}" class="characterpanel fluid-container">
+
+                        <div id="characterInfo" class="row">
+                            <h2 id="heroName" class="col-md-2">Held {{ hero.name }}</h2>
+                            <ul class="characterQualities col-md-10">
+                                <li>Rasse: {{ hero.race }}</li>
+                                <li>Profession: {{ hero.profession }}</li>
+                                <li>Kultur: {{ hero.culture }}</li>
+                                <li>Alter: {{ hero.age  }}</li>
+                            </ul>
+                            <ul class="characterStats">
+                                <li>KK: {{ hero.koerperkraft }}</li>
+                                <li>KO: {{ hero.konstitution}}</li>
+                                <li>MU: {{ hero.mut}}</li>
+                                <li>KL: {{ hero.klugheit }}</li>
+                                <li>IN: {{ hero.intuition }}</li>
+                                <li>CH: {{ hero.charisma }}</li>
+                                <li>FF: {{ hero.fingerfertigkeit }}</li>
+                                <li>GE: {{ hero.gewandtheit }}</li>
+                            </ul>
+                        </div>
+
+                        <div id="skills" class="row">
+                            {% for ability in hero.ability_set.all %}
+                                <div class="skill col-md-3">
+                                    <div class="row skillHeading">{{ ability.talent }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                {% endfor %}
+                {% endblock %}
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'skillhelper/style.css' %}" />
+
+{% if not heroList %}
+    <h1>Ups, da is was schiefgegangen. Keine Helden geladen.</h1>
+{% else %}
+
+    <h1 class="heading">Hero viewer</h1>
+    <h3>Folgende Helden sind zur Zeit in der Datenbank:</h3>
+    <br>
+    <ul>
+        {% for hero in heroList %}
+            <li>{{ hero.name }} vom Volke der <i>{{ hero.race }}</i></li>
+        {% endfor %}
+    </ul>
+
+{% endif %}

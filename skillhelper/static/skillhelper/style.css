@@ -1,0 +1,77 @@
+body {
+    background-color: #303031;
+}
+
+/*Widget border*/
+.ui-tabs.ui-widget-content {
+    background: transparent;
+    border: none;
+}
+/*Tab nav background*/
+.ui-tabs .ui-tabs-nav {
+    background: linear-gradient(#222, #888);
+    border: none;
+    border-radius: 0;
+}
+/*The Tab header elements*/
+.ui-tabs .ui-tabs-nav li {
+    background: linear-gradient(#999, #666);
+    border-top: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;
+}
+/* And their links */
+.ui-tabs .ui-tabs-nav li a {
+    color: #333;
+}
+/* The active tab*/
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+    background: #bbb;
+}
+/* And its color */
+.ui-tabs .ui-tabs-nav li.ui-tabs-active a {
+    color: #555;
+}
+
+/* For the active tab */
+.ui-tabs .ui-tabs-panel {
+    background: #888;
+}
+
+#characterInfo {
+    font-weight: bold;
+}
+.characterQualities, .characterStats {
+    list-style-type: none;
+    margin-bottom: 1px;
+
+}
+.characterQualities li, .characterStats li{
+    display: inline;
+}
+
+#skills {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.skill {
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 1em;
+    background: darkgray;
+}
+.skillHeading {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#result {
+    border-top: 1px solid black;
+}
+
+.roll-btn {
+}

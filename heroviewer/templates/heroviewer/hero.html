@@ -1,0 +1,10 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'skillhelper/style.css' %}" />
+
+{% if not hero %}
+    <h1 class="error">Held nicht gefunden.</h1>
+{% else %}
+    <h1 class="heading">{{ hero.name }}</h1>
+    <p>{{ hero.name }} ist ein {{ hero.race }} von {{ hero.age }} Zyklen.</p>
+    <h3>Basiswerte:</h3>
+{% endif %}
