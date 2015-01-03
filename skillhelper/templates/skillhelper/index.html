@@ -16,8 +16,9 @@
         {% for hero in heroes %}
             <div id="tab{{ hero.id }}" class="characterpanel fluid-container">
 
-                <div id="characterInfo" class="row">
-                    <h2 id="heroName" class="col-md-2">Held {{ hero.name }}</h2>
+                {# General character information #}
+                <div class="row generalCharacterInformation">
+                    <h2 class="name col-md-2">Held {{ hero.name }}</h2>
                     <ul class="characterQualities col-md-10">
                         <li>Rasse: {{ hero.race }}</li>
                         <li>Profession: {{ hero.profession }}</li>
@@ -36,10 +37,11 @@
                     </ul>
                 </div>
 
-                <div id="skills" class="row">
+                {# Character skills #}
+                <div class="skills row">
                     {% for ability in hero.ability_set.all %}
                         <div class="skill col-md-3">
-                            <div class="row skillHeading">{{ ability.talent }}</div>
+                            <h3 class="row name">{{ ability.talent }}</h3>
                             <ul class="row requiredTalents">
                                 <li>{{ ability.talent.get_requiredTalent1_display }}</li>
                                 <li>{{ ability.talent.get_requiredTalent2_display }}</li>
@@ -50,7 +52,8 @@
                     {% endfor %}
                 </div>
 
-                <div id="result" class=row">
+                {# Roll/Execute skill area #}
+                <div id="rollArea" class=row">
                     <div class="row col-md-9 resultValues">
                         <div class="col-md-4">
                             <label for="resultValue1" class="label">Testlabel 1</label>
@@ -67,6 +70,10 @@
                     </div>
                     <div class="col-md-3 roll-btn">
                         <img src="{% static 'skillhelper/images/wuerfelnBtn.png' %}" />
+                    </div>
+
+                    <div style="clear: both;">
+
                     </div>
                 </div>
 
